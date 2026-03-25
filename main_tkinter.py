@@ -12,13 +12,11 @@ class MainWindow(QMainWindow):
         self.resize(600, 450)
         
         central_widget = QWidget()
-        # Fundal gri închis pentru contrast
         central_widget.setStyleSheet("background-color: #2b2b2b; color: white;")
         self.setCentralWidget(central_widget)
         
         main_layout = QVBoxLayout(central_widget)
 
-        # Input - Forțăm text NEGRU pe fundal ALB
         top_layout = QHBoxLayout()
         top_layout.addWidget(QLabel("List of integers:"))
         self.input_list = QLineEdit("1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15")
@@ -26,19 +24,16 @@ class MainWindow(QMainWindow):
         top_layout.addWidget(self.input_list)
         main_layout.addLayout(top_layout)
 
-        # Zona de rezultat - Forțăm text NEGRU pe fundal ALB
         self.result_area = QTextEdit()
         self.result_area.setStyleSheet("background-color: white; color: black; font-family: Consolas;")
         self.result_area.setPlaceholderText("Rezultatele vor aparea aici...")
         main_layout.addWidget(self.result_area)
 
-        # Butoane jos
         btn_layout = QHBoxLayout()
         self.btn_odd = QPushButton("Filter odd")
         self.btn_prime = QPushButton("Filter primes")
         self.btn_sum = QPushButton("Sum numbers")
         
-        # Stil pentru butoane să fie vizibile
         style = "background-color: #555; color: white; padding: 10px; border-radius: 5px;"
         self.btn_odd.setStyleSheet(style)
         self.btn_prime.setStyleSheet(style)
@@ -49,7 +44,6 @@ class MainWindow(QMainWindow):
         btn_layout.addWidget(self.btn_sum)
         main_layout.addLayout(btn_layout)
 
-        # Conectare butoane
         self.btn_odd.clicked.connect(lambda: self.run_task(procesare_numere.filter_odd_task))
         self.btn_prime.clicked.connect(lambda: self.run_task(procesare_numere.filter_prime_task))
         self.btn_sum.clicked.connect(lambda: self.run_task(procesare_numere.sum_numbers_task))
